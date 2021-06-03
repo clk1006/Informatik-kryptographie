@@ -46,9 +46,10 @@ def getCoIndex(text):
         index+=countChar(text,chr(i))*(countChar(text,chr(i))-1)/len(text)/(len(text)-1)
     return index
 def splitBlocks(text,blockNumber):
+    text=purify(text)
     blocks=list(range(blockNumber))
     for i in range(len(blocks)):
-        blocks[i]=[]
+        blocks[i]=""
     for i in range(len(text)):
-        blocks[i%blockNumber].append(text[i])
+        blocks[i%blockNumber]+=text[i]
     return blocks
