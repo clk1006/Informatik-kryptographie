@@ -1,4 +1,4 @@
-from libclk import purify
+from lib import purify
 text = input("Bitte einen Text einfügen: ")
 text = purify(text)
 haeufigkeiten = []

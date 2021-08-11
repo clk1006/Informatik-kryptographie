@@ -63,15 +63,15 @@ def encryptXOR(chars,key):
     textLen=len(text)
     keyLen=len(str(bin(key)))-2
     text=distribute2d(text,keyLen)
-    text2=[]
+    blockNumbers=[]
     for block in text:
         num=""
         for entry in block:
             num+=str(entry)
         num=int(num,2)
-        text2.append(num)
+        blockNumbers.append(num)
     text=""
-    for num in text2:
+    for num in blockNumbers:
         block=str(bin(num ^ key))[2:]
         while len(block)<keyLen:
             block="0"+block
