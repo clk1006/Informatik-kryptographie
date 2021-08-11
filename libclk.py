@@ -53,3 +53,36 @@ def splitBlocks(text,blockNumber):
     for i in range(len(text)):
         blocks[i%blockNumber]+=text[i]
     return blocks
+def encryptXOR(chars,key):
+    text=""
+    for char in chars:
+        char=str(bin(char))[2:]
+        while len(char)<5:
+            char="0"+char
+        text+=char
+    textLen=len(text)
+    keyLen=len(str(bin(key)))-2
+    text=distribute2d(text,keyLen)
+    text2=[]
+    for block in text:
+        num=""
+        for entry in block:
+            num+=str(entry)
+        num=int(num,2)
+        text2.append(num)
+    text=""
+    for num in text2:
+        block=str(bin(num ^ key))[2:]
+        while len(block)<keyLen:
+            block="0"+block
+        text+=block
+    text=text[:textLen]
+    chars=[]
+    text=distribute2d(text,5)
+    for block in text:
+        num=""
+        for entry in block:
+            num+=str(entry)
+        num=int(num,2)
+        chars.append(num)
+    return chars
