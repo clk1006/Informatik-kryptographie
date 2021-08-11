@@ -13,6 +13,7 @@ if encrypting:
         while len(char)<5:
             char="0"+char
         text+=char
+    textLen=len(text)
     keyLen=len(str(bin(key)))-2
     text=libclk.distribute2d(text,keyLen)
     text2=[]
@@ -28,7 +29,7 @@ if encrypting:
         while len(block)<keyLen:
             block="0"+block
         text+=block
-    text=text[:len(text)-keyLen+5-((len(text)-keyLen)%5)]
+    text=text[:textLen]
     chars=[]
     text=libclk.distribute2d(text,5)
     for block in text:
@@ -57,6 +58,7 @@ else:
         while len(char)<5:
             char="0"+char
         text+=char
+    textLen=len(text)
     keyLen=len(str(bin(key)))-2
     text=libclk.distribute2d(text,keyLen)
     text2=[]
@@ -72,7 +74,7 @@ else:
         while len(block)<keyLen:
             block="0"+block
         text+=block
-    text=text[:len(text)-keyLen+5-((len(text)-keyLen)%5)]
+    text=text[:textLen]
     chars=[]
     text=libclk.distribute2d(text,5)
     for block in text:
