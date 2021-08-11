@@ -1,2 +1,2 @@
 # Informatik-Kryptographie
-Repository with a few usefool tools for cryptography and crypto analysis
+This repository was created by Caspar Kiehn with contributions from Felix Eberle and contains useful code written for computer science lessons in the topic of cryptography.
