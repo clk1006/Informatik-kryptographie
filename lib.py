@@ -61,24 +61,15 @@ def encryptXOR(chars,key):
             char="0"+char
         text+=char
     textLen=len(text)
-    keyLen=len(str(bin(key)))-2
-    text=distribute2d(text,keyLen)
-    blockNumbers=[]
-    for block in text:
-        num=""
-        for entry in block:
-            num+=str(entry)
-        num=int(num,2)
-        blockNumbers.append(num)
-    text=""
-    for num in blockNumbers:
-        block=str(bin(num ^ key))[2:]
-        while len(block)<keyLen:
-            block="0"+block
-        text+=block
-    text=text[:textLen]
-    chars=[]
+    key=str(bin(key))[2:]
+    while len(key)<textLen:
+        key+=key
+    key=int(key[:textLen],2)
+    text=str(bin(int(text,2)^key))[2:]
+    while len(text)<textLen:
+        text="0"+text
     text=distribute2d(text,5)
+    chars=[]
     for block in text:
         num=""
         for entry in block:
