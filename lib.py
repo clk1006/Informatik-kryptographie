@@ -77,3 +77,17 @@ def encryptXOR(chars,key):
         num=int(num,2)
         chars.append(num)
     return chars
+def extEuclid(a,b):
+    [s,v,u,t]=[1,1,0,0]
+    while b!=0:
+        q=a//b
+        b1=b
+        b=a-q*b
+        a=b1
+        u1=u
+        u=s-q*u
+        s=u1
+        v1=v
+        v=t-q*v
+        t=v1
+    return [a,s,t]
